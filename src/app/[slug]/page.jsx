@@ -18,10 +18,6 @@ export async function generateMetadata({ params }) {
         url: `%s | ${SITENAME}`,
       },
     }
-  } else {
-    return {
-      title: 'Не найдено',
-    }
   }
 }
 
