@@ -8,7 +8,7 @@ import cn from 'classname'
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const book = BOOKS_LIST.filter((book) => book.id == slug)
-  if (book.id) {
+  if (book.title) {
     return {
       title: book[0].title,
       openGraph: {
