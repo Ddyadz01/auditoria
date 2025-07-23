@@ -8,7 +8,9 @@ export const Header = ({ className }) => {
     <div className={cn('h-[126px] flex items-center', className)}>
       <Container className={'flex items-center justify-between'}>
         <div>
-          <Image src="/logo.png" width={267} height={31} alt="logo" />
+          <Link href="/">
+            <Image src="/logo.png" width={267} height={31} alt="logo" />
+          </Link>
         </div>
         <nav>
           <ul className="flex items-center gap-10">

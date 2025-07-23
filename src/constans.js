@@ -45,7 +45,7 @@ export const BOOKS_LIST = [
     },
     price: '199',
     age: 18,
-    rating: 5.8,
+    rating: 4.8,
   },
 ]
 

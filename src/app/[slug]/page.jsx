@@ -8,14 +8,20 @@ import cn from 'classname'
 export async function generateMetadata({ params }) {
   const { slug } = await params
   const book = BOOKS_LIST.filter((book) => book.id == slug)
-  return {
-    title: book[0].title,
-    openGraph: {
-      images: book[0].imageURL,
+  if (book.id) {
+    return {
       title: book[0].title,
-      description: book[0].description,
-      url: `%s | ${SITENAME}`,
-    },
+      openGraph: {
+        images: book[0].imageURL,
+        title: book[0].title,
+        description: book[0].description,
+        url: `%s | ${SITENAME}`,
+      },
+    }
+  } else {
+    return {
+      title: 'Не найдено',
+    }
   }
 }
 
@@ -23,6 +29,9 @@ export default async function BookPage({ params }) {
   const { slug } = await params
   const bookFiltered = BOOKS_LIST.filter((book) => book.id == slug)
   const book = bookFiltered[0]
+
+  if (!book) return <Container>Error</Container>
+
   return (
     <div className={''}>
       <Container>
