@@ -12,7 +12,9 @@ export async function generateMetadata({ params }) {
     title: book[0].title,
     openGraph: {
       images: book[0].imageURL,
-      url: '%s',
+      title: book[0].title,
+      description: book[0].description,
+      url: `%s | ${SITENAME}`,
     },
   }
 }
