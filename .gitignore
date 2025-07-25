@@ -16,7 +16,7 @@
 # next.js
 /.next/
 
-/public/mp3
+
 /out/
 
 # production
