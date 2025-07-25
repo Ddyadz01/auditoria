@@ -1,4 +1,4 @@
-import { Container } from '@/components/Index'
+import { Container, PartItem, Player } from '@/components/Index'
 import { Title } from '@/components/Title'
 import { BOOKS_LIST, SITENAME } from '@/constans'
 import Image from 'next/image'
@@ -32,12 +32,17 @@ export default async function BookPage({ params }) {
 
   if (!book) return <Container>Error</Container>
 
+  let active = 0
+
   return (
     <div className={''}>
       <Container>
         <div className="flex gap-5">
           <div>
             <Image src={book.imageURL} width={438} height={438} alt={book.title} />
+            <div>
+              <Player book={book} active={active} />
+            </div>
           </div>
           <div className="w-[100%]">
             <div className="flex items-center justify-between gap-15 leading-[52px]">
@@ -92,7 +97,23 @@ export default async function BookPage({ params }) {
               <div className="mt-8">
                 <p className="text-gray">{book.description}</p>
               </div>
+              <div className="mt-10">
+                <button className="border-1 text-white bg-primary border-primary py-3 px-5 cursor-pointer rounded-2xl">
+                  Купить за {book.price + ' руб.'}
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+        <div className="mt-10">
+          <div className="flex items-center justify-between">
+            <Title text={'Содержание книги'} className={'text-[26px] font-[700]'} />
+            <p className="text-gray">{`${book.content.length} частей / 23 часа 15 минут`}</p>
+          </div>
+          <div>
+            {book.content.map((part, idx) => (
+              <PartItem key={part.id} part={part} idx={idx} active={active} />
+            ))}
           </div>
         </div>
       </Container>

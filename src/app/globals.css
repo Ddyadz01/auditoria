@@ -6,6 +6,10 @@
   --white: #ffffff;
 }
 
+* {
+  user-select: none
+}
+
 .text-primary {
   color: #EC8F32;
 }
@@ -20,6 +24,11 @@
 
 .bg-blue {
   background-color: #0B0C13;
+}
+
+
+.border-primary {
+  border: 1px solid #EC8F32;
 }
 
 body {
